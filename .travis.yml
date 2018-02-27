@@ -11,7 +11,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: $heroku
+    secure: $heroku_token
   app: pokedexjoseasousa
   on:
     branch: master
