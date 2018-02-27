@@ -2,7 +2,7 @@
   "name": "pokedex",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/joseasousa/pokedex",
+  "homepage": "https://joseasousa.github.io/pokedex/",
   "dependencies": {
     "apisauce": "^0.14.3",
     "gh-pages": "^1.1.0",
