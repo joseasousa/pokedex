@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { RaisedButton }  from 'material-ui'
 
 import { connect } from 'react-redux'
 import pokemonActions from '../../store/ducks/pokemon'
@@ -17,9 +18,21 @@ class Home extends Component {
         <h1>
           Home
         </h1>
+        <RaisedButton primary label='Teste' /> 
+
         {
-          loading ?
-            <h1>...Carregando</h1>
+          loading
+            ? <div className='preloader-wrapper big active'>
+              <div className='spinner-layer spinner-red-only'>
+                <div className='circle-clipper left'>
+                  <div className='circle' />
+                </div><div className='gap-patch'>
+                  <div className='circle' />
+                </div><div className='circle-clipper right'>
+                  <div className='circle' />
+                </div>
+              </div>
+            </div>
             : <Pokemons pokemons={data} />
         }
       </div>

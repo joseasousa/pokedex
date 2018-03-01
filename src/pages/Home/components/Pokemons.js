@@ -4,8 +4,8 @@ import Pokemon from './Pokemon'
 const Pokemons = ({ pokemons }) => (
   <div>
     {
-      pokemons.map((pokemon, i) =>
-        <Pokemon key={i} pokemon={pokemon} />)
+      pokemons.map(pokemon =>
+        <Pokemon key={pokemon.id} pokemon={pokemon} />)
     }
   </div>
 )
