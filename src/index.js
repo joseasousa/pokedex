@@ -6,14 +6,22 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin()
 
 const store = createStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <MuiThemeProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root'))
 registerServiceWorker()
