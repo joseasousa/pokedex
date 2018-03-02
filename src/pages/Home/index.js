@@ -21,12 +21,9 @@ class Home extends Component {
   }
 
   render () {
-    const { loading, data } = this.props.pokemons
+    const { loading, error, data } = this.props.pokemons
     return (
       <div>
-        <h1>
-          Home
-        </h1>
         <FloatingActionButton
           backgroundColor='red'
           style={style}
@@ -39,6 +36,10 @@ class Home extends Component {
             ? <CircularProgress color='red' />
             : <Pokemons pokemons={data} />
         }
+
+        {error & (
+          <h1>ouve um erro</h1>
+        )}
       </div>
     )
   }
