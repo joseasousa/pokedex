@@ -2,7 +2,7 @@ import { createReducer, createActions } from 'reduxsauce'
 
 /** Actions Types e Creators */
 const { Types, Creators } = createActions({
-  pokemonRequest: null,
+  pokemonRequest: ['search'],
   pokemonSuccess: ['data'],
   pokemonFailure: null,
   pokemonAdd: ['pokemon'],

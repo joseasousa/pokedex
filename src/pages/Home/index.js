@@ -1,14 +1,24 @@
 import React, { Component } from 'react'
-import { RaisedButton }  from 'material-ui'
+import { FloatingActionButton }  from 'material-ui'
+import ContentAdd from 'material-ui/svg-icons/content/add'
+import CircularProgress from 'material-ui/CircularProgress'
 
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import pokemonActions from '../../store/ducks/pokemon'
 
 import Pokemons from './components/Pokemons'
 
+const style = {
+  marginRight: 20,
+  position: 'fixed',
+  bottom: 40,
+  right: 40
+}
+
 class Home extends Component {
   componentDidMount () {
-    this.props.pokemonRequest()
+    this.props.pokemonRequest('charmander')
   }
 
   render () {
@@ -18,21 +28,12 @@ class Home extends Component {
         <h1>
           Home
         </h1>
-        <RaisedButton primary label='Teste' /> 
-
+        <FloatingActionButton backgroundColor='red' style={style} >
+          <ContentAdd />
+        </FloatingActionButton>
         {
           loading
-            ? <div className='preloader-wrapper big active'>
-              <div className='spinner-layer spinner-red-only'>
-                <div className='circle-clipper left'>
-                  <div className='circle' />
-                </div><div className='gap-patch'>
-                  <div className='circle' />
-                </div><div className='circle-clipper right'>
-                  <div className='circle' />
-                </div>
-              </div>
-            </div>
+            ? <CircularProgress color='red' />
             : <Pokemons pokemons={data} />
         }
       </div>
@@ -45,7 +46,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  pokemonRequest: () => dispatch(pokemonActions.pokemonRequest())
+  pokemonRequest: (item) => dispatch(pokemonActions.pokemonRequest(item))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
