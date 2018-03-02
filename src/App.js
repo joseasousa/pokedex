@@ -12,8 +12,8 @@ class App extends Component {
       <div className='App'>
         <Router>
           <Switch>
-            <Route exact path='/home' render={() => <Home />} />
-            <Route exact path='/' render={() => <AddPokemon />} />
+            <Route exact path='/' render={() => <Home />} />
+            <Route exact path='/addPokemon' render={() => <AddPokemon />} />
             <Route component={NotFound} />
           </Switch>
         </Router>
