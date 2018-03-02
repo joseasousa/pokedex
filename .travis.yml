@@ -1,17 +1,11 @@
 language: node_js
 node_js: lts/*
-sudo: false
-before_install:
-- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.27.5
-- export PATH=$HOME/.yarn/bin:$PATH
-cache:
-  yarn: true
 install:
-- cd ./functions && yarn install && cd ..
-- yarn install
+- cd ./functions && npm install && cd ..
+- npm install
 script:
-- yarn build && cd ..
-- yarn test && cd ..
+- npm run build && cd ..
+- npm run test && cd ..
 env:
   global:
     secure: Y1BLkcrDEqiahZudyhD84hcez4ww/9JRVI2bpQdLhoL718XscG7nqEp66XDeH41RrFS4gUMX2pMAnSQ54jMUKhLgXqIg9tAdrGvWneJZ1oKaVWTl94Bbx17hdTAE6AUIfZSsyRm2YS9z+NXYVKV6rU+mhZSX0GmLGvW1k74fn/qe0DQ+wbRYhDf9cw7oT/KivkvrFwKN0FD3BG/eNdomHdJy+Wb77asjYtZsmUWeKaSGzwP238c2mooMRUzbTNuwQEDCDPFl2CRnXrhiYH5QErr+ZWS5B4hA/dPSrNW39C8jgo4F0A+fbVkFVV9/Ak3FMfwNYQ2DPR7cFv58bnWLKb+doT1POEIMoiM8xTmMTdCQlCLj5bNhUZ+7pzsfDQX7v5vCDMdUk1i2Sw8bysXrTip70VD9xXuk9DeJzTtktREx9qQl6WelT52XCch6LWx+N1nSEUdMvm/4Lon77/LSV9rdq6q6Bh5WtmuEyyC8XdjvdWT9xWvWaMkNelJDm5nEDlFLeb0kHtp9co07noswzrrFtA02+jY1A74tNXCMPUguje0HPaQCc1M84m+eTvuBTBHl//FIdoPShmDJWv+71b34VCKVqm4CoXyQiKGJjAUeWp01yFJHopB1l71wMSjzImaynkI/KekXzzyz4O/w/aycZrmfaamjXJYzL6HmiZA=
