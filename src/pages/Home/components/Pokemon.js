@@ -2,7 +2,7 @@ import React from 'react'
 
 const Pokemon = ({ pokemon }) => (
   <div>
-    <img src={pokemon.sprites.front_default} />
+    <img src={pokemon.sprites.front_default} alt={pokemon.name} />
   </div>
 )
 

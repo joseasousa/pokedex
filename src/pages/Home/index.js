@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { FloatingActionButton }  from 'material-ui'
+import { FloatingActionButton } from 'material-ui'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import CircularProgress from 'material-ui/CircularProgress'
-
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import pokemonActions from '../../store/ducks/pokemon'
+import { withRouter } from 'react-router'
 
 import Pokemons from './components/Pokemons'
 
@@ -22,13 +21,17 @@ class Home extends Component {
   }
 
   render () {
-    const { loading, error, data } = this.props.pokemons
+    const { loading, data } = this.props.pokemons
     return (
       <div>
         <h1>
           Home
         </h1>
-        <FloatingActionButton backgroundColor='red' style={style} >
+        <FloatingActionButton
+          backgroundColor='red'
+          style={style}
+          onClick={() => this.props.history.push('/addPokemon')}
+        >
           <ContentAdd />
         </FloatingActionButton>
         {
@@ -46,7 +49,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  pokemonRequest: (item) => dispatch(pokemonActions.pokemonRequest(item))
+  pokemonRequest: () => dispatch(pokemonActions.pokemonRequest())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home))

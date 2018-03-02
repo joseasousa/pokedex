@@ -2,11 +2,12 @@ import { createReducer, createActions } from 'reduxsauce'
 
 /** Actions Types e Creators */
 const { Types, Creators } = createActions({
-  pokemonRequest: ['search'],
+  pokemonRequest: null,
   pokemonSuccess: ['data'],
   pokemonFailure: null,
   pokemonAdd: ['pokemon'],
-  pokemonRemove: ['id']
+  pokemonRemove: ['id'],
+  pokemonFilter: ['search']
 })
 
 export { Types }
@@ -23,6 +24,9 @@ const initialState = {
 /* Reducers */
 
 export const request = state =>
+  ({ ...state, loading: true })
+
+export const filter = state =>
   ({ ...state, loading: true })
 
 export const success = (state, action) => ({
@@ -50,5 +54,6 @@ export const reducer = createReducer(initialState, {
   [Types.POKEMON_SUCCESS]: success,
   [Types.POKEMON_FAILURE]: failure,
   [Types.POKEMON_ADD]: add,
-  [Types.POKEMON_REMOVE]: remove
+  [Types.POKEMON_REMOVE]: remove,
+  [Types.POKEMON_FILTER]: filter
 })

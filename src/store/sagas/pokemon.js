@@ -4,10 +4,8 @@ import { call, put } from 'redux-saga/effects'
 
 import ActionCreators from '../ducks/pokemon'
 
-export function * getPokemons (action) {
-  console.log(action)
-
-  const response = yield call(api.get, `/pokemon/${action.search}`)
+export function * getPokemons () {
+  const response = yield call(api.get, `/pokemon/`)
 
   if (response.ok) {
     const pokemons = response.data.results.map(async item =>
@@ -15,6 +13,16 @@ export function * getPokemons (action) {
 
     const resul = yield Promise.all(pokemons)
     yield put(ActionCreators.pokemonSuccess(resul))
+  } else {
+    yield put(ActionCreators.pokemonFailure())
+  }
+}
+
+export function * getPokemon (action) {
+  const response = yield call(api.get, `/pokemon/${action.filter}`)
+
+  if (response.ok) {
+    yield put(ActionCreators.pokemonSuccess(response.ok))
   } else {
     yield put(ActionCreators.pokemonFailure())
   }
