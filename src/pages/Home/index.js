@@ -36,10 +36,12 @@ class Home extends Component {
             ? <CircularProgress color='red' />
             : <Pokemons pokemons={data} />
         }
+        <div>
+          {error && (
+            <h1>{console.error(error)}</h1>
+          )}
+        </div>
 
-        {error & (
-          <h1>ouve um erro</h1>
-        )}
       </div>
     )
   }

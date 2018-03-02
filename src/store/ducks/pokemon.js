@@ -4,7 +4,7 @@ import { createReducer, createActions } from 'reduxsauce'
 const { Types, Creators } = createActions({
   pokemonRequest: null,
   pokemonSuccess: ['data'],
-  pokemonFailure: null,
+  pokemonFailure: ['error'],
   pokemonAdd: ['pokemon'],
   pokemonRemove: ['id'],
   pokemonFilter: ['search']
@@ -35,10 +35,10 @@ export const success = (state, action) => ({
   error: null
 })
 
-export const failure = () => ({
+export const failure = (state, action) => ({
   data: [],
   loading: false,
-  error: true
+  error: action.error
 })
 
 const add = (state, action) =>

@@ -1,4 +1,4 @@
-# [Pokedex](pokedexjoseasousa.herokuapp.com)  [![Build Status](https://travis-ci.org/joseasousa/pokedex.svg?branch=master)](https://travis-ci.org/joseasousa/pokedex)
+# [Pokedex](https://pokedex-729c5.firebaseapp.com/)  [![Build Status](https://travis-ci.org/joseasousa/pokedex.svg?branch=master)](https://travis-ci.org/joseasousa/pokedex)
 
 
 Pokédex sample with React, Redux, Redux-saga. Using Pokéapi v2 as source for data and sprites.

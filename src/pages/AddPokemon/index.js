@@ -9,9 +9,9 @@ class AddPokemon extends Component {
   render () {
     return (
       <div>
-        <h1>oi</h1>
         <AutoComplete
           openOnFocus
+          hintText='Digeite o nome ou o id do pokemon'
           dataSource={data}
           fullWidth
         />
