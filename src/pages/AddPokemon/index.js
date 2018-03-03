@@ -25,6 +25,7 @@ class AddPokemon extends Component {
     const {data, loading} = this.props.pokemon
     return (
       <div>
+      {console.log(this.props.pokemon)}
         <AutoComplete
           openOnFocus
           hintText='Digeite o nome ou o id do pokemon'
@@ -35,9 +36,9 @@ class AddPokemon extends Component {
         />
         
         {
-          loading
-            ? <CircularProgress color='red' />
-            : <Pokemon pokemon={data} />
+          loading && (
+             <Pokemon pokemon={data} />
+          )
         }
       </div>
     )

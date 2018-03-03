@@ -17,7 +17,7 @@ const style = {
 
 class Home extends Component {
   componentDidMount () {
-   // this.props.pokemonRequest('charmander')
+    // this.props.pokemonRequest()
   }
 
   render () {
@@ -32,10 +32,9 @@ class Home extends Component {
           <ContentAdd />
         </FloatingActionButton>
         {
-          loading
-            ? <CircularProgress color='red' />
-            : <Pokemons pokemons={data} />
-        }
+          !loading && (
+            <Pokemons pokemons={data} />
+          )}
         <div>
           {error && (
             <h1>{console.error(error)}</h1>
