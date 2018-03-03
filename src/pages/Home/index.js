@@ -17,7 +17,7 @@ const style = {
 
 class Home extends Component {
   componentDidMount () {
-    this.props.pokemonRequest('charmander')
+   // this.props.pokemonRequest('charmander')
   }
 
   render () {

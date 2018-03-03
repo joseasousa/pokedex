@@ -8,6 +8,7 @@ export function * getPokemons () {
   const response = yield call(api.get, `/pokemon/`)
 
   if (response.ok) {
+    console.log(response.data)
     const pokemons = response.data.results.map(async item =>
       getIndividualPoke(item.url))
 
@@ -19,7 +20,7 @@ export function * getPokemons () {
 }
 
 export function * getPokemon (action) {
-  const response = yield call(api.get, `/pokemon/${action.filter}`)
+  const response = yield call(api.get, `/pokemon/${action.search}`)
 
   if (response.ok) {
     yield put(ActionCreators.pokemonSuccess(response.data))
