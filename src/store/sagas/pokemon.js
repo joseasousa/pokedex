@@ -25,7 +25,7 @@ export function * getPokemon (action) {
   if (response.ok) {
     yield put(ActionCreators.pokemonSuccess(response.data))
   } else {
-    yield put(ActionCreators.pokemonFailure(response.problem))
+    yield put(ActionCreators.pokemonFailure(true))
   }
 }
 

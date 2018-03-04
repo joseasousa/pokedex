@@ -4,28 +4,43 @@ import pokemonActions from '../../store/ducks/pokemon'
 import CircularProgress from 'material-ui/CircularProgress'
 import { connect } from 'react-redux'
 import Pokemon from '../../Component/Pokemon'
+import api from '../../services/api'
+import { EditorFormatListBulleted } from 'material-ui';
 
 const dataPoke = require('../../data/pokemons.json')
 
 class AddPokemon extends Component {
-  state = {
-    fild: ''
+  constructor(props){
+    super(props)
+    this.state = {
+      fild: '',
+      pokemon: {},
+      loading: true,
+      error: false
+    }
   }
+
   handleUpdateInput = fild => {
     this.setState({
       fild
     })
   }
 
-  handleNewRequest = () => {
-    this.props.pokemonFilter(this.state.fild)
+  handleNewRequest = async () => {
+    const resul = await api.get(`/pokemon/${this.state.fild}`)
+
+    if(resul.ok){
+      this.setState({pokemon: resul.data,loading: false, error:false})
+    }else{
+      this.setState({error: true, loading: true})
+    }
   }
 
   render () {
-    const {data, loading} = this.props.pokemon
+    const { pokemon, loading, error } = this.state
     return (
       <div>
-      {console.log(this.props.pokemon)}
+      
         <AutoComplete
           openOnFocus
           hintText='Digeite o nome ou o id do pokemon'
@@ -34,23 +49,12 @@ class AddPokemon extends Component {
           dataSource={dataPoke}
           searchText={this.state.fild}
         />
-        
-        {
-          loading && (
-             <Pokemon pokemon={data} />
-          )
+        { !loading
+            && <Pokemon pokemon={pokemon} />
         }
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  pokemon: state.pokemon
-})
-
-const mapDispatchToProps = dispatch => ({
-  pokemonFilter: fild => dispatch(pokemonActions.pokemonFilter(fild))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddPokemon)
+export default AddPokemon

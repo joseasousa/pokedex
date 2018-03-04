@@ -1,12 +1,35 @@
 import React from 'react'
 
+import {
+  Card,
+  CardActions,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+  CardText
+} from 'material-ui/Card'
+
+const styles = {
+  root: {
+    width: 500,
+    height: 450,
+    alignItems: 'center'
+  }
+}
+
 const Pokemon = ({ pokemon }) => (
   <div>
-    {console.log('pokemon:', pokemon)}
-    <img
-      src={pokemon.sprites.front_default}
-      alt={pokemon.name}
-    />
+    <Card style={styles.root}>
+      <CardHeader
+        title={pokemon.name}
+        subtitle={`#${pokemon.id}`}
+      />
+      <CardMedia>
+        <img src={pokemon.sprites.front_default} alt='' />
+      </CardMedia>
+      <CardText />
+
+    </Card>
   </div>
 )
 

@@ -31,10 +31,7 @@ class Home extends Component {
         >
           <ContentAdd />
         </FloatingActionButton>
-        {
-          !loading && (
-            <Pokemons pokemons={data} />
-          )}
+
         <div>
           {error && (
             <h1>{console.error(error)}</h1>
