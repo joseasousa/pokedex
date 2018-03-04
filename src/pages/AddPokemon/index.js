@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
-import pokemonActions from '../../store/ducks/pokemon'
-import CircularProgress from 'material-ui/CircularProgress'
-import { connect } from 'react-redux'
+
 import Pokemon from '../../Component/Pokemon'
 import api from '../../services/api'
-import { EditorFormatListBulleted } from 'material-ui';
+
 
 const dataPoke = require('../../data/pokemons.json')
 
@@ -37,7 +35,7 @@ class AddPokemon extends Component {
   }
 
   render () {
-    const { pokemon, loading, error } = this.state
+    const { pokemon, loading } = this.state
     return (
       <div>
       
