@@ -30,6 +30,7 @@ class AddPokemon extends Component {
     if(resul.ok){
       this.setState({pokemon: resul.data,loading: false, error:false})
     }else{
+      console.error(resul.error)
       this.setState({error: true, loading: true})
     }
   }
